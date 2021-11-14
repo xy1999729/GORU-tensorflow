@@ -6,7 +6,6 @@ import tensorflow.compat.v1 as tf
 import math
 import numpy as np
 from tensorflow.python.ops import rnn_cell_impl
-tf.reset_default_graph()
 
 
 def modrelu(inputs, bias):
