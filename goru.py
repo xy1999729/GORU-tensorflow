@@ -104,7 +104,7 @@ def fft_param(num_units):
     phase_init = tf.random_uniform_initializer(-3.14, 3.14)
     capacity = int(math.log(num_units, 2))
 
-    Theta = tf.get_variable("theta", [capacity, num_units // 2],
+    Theta = tf.get_variable("Theta", [capacity, num_units // 2],
                             initializer=phase_init)
     cos_theta = tf.cos(Theta)
     sin_theta = tf.sin(Theta)
