@@ -234,6 +234,7 @@ class GORUCell(rnn_cell_impl.RNNCell):
     def __call__(self, inputs, state, scope=None):
         with tf.variable_scope(scope or "goru_cell"):
             
+            tf.compat.v1.reset_default_graph()
             inputs_size = inputs.get_shape()[-1]
 
             input_matrix_init = tf.random_uniform_initializer(-0.01, 0.01)
