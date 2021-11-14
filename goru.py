@@ -232,7 +232,7 @@ class GORUCell(rnn_cell_impl.RNNCell):
         return h
 
     def __call__(self, inputs, state, scope=None):
-        with tf.variable_scope(scope or "goru_cell", reuse=True):
+        with tf.variable_scope(scope or "goru_cell"):
             
             inputs_size = inputs.get_shape()[-1]
 
