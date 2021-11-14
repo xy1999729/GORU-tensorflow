@@ -2,7 +2,7 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-import tensorflow.compat.v1 as tf
+import tensorflow as tf
 import math
 import numpy as np
 from tensorflow.python.ops import rnn_cell_impl
@@ -104,7 +104,7 @@ def fft_param(num_units):
     phase_init = tf.random_uniform_initializer(-3.14, 3.14)
     capacity = int(math.log(num_units, 2))
 
-    theta = tf.get_variable("theta", [capacity, num_units // 2],
+    theta = tf.compat.v1.get_variable("theta", [capacity, num_units // 2],
                             initializer=phase_init)
     cos_theta = tf.cos(theta)
     sin_theta = tf.sin(theta)
@@ -128,7 +128,7 @@ def tunable_param(num_units, capacity):
     capacity_B = capacity - capacity_A
     phase_init = tf.random_uniform_initializer(-3.14, 3.14)
 
-    theta_A = tf.get_variable("theta_A", [capacity_A, num_units // 2],
+    theta_A = tf.compat.v1.get_variable("theta_A", [capacity_A, num_units // 2],
                               initializer=phase_init)
     cos_theta_A = tf.cos(theta_A)
     sin_theta_A = tf.sin(theta_A)
@@ -136,7 +136,7 @@ def tunable_param(num_units, capacity):
     cos_list_A = tf.concat([cos_theta_A, cos_theta_A], axis=1)
     sin_list_A = tf.concat([sin_theta_A, -sin_theta_A], axis=1)
 
-    theta_B = tf.get_variable("theta_B", [capacity_B, num_units // 2 - 1],
+    theta_B = tf.compat.v1.get_variable("theta_B", [capacity_B, num_units // 2 - 1],
                               initializer=phase_init)
     cos_theta_B = tf.cos(theta_B)
     sin_theta_B = tf.sin(theta_B)
